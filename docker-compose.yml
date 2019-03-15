@@ -2,7 +2,7 @@ version: '3'
 services:
     front-end:
         build: .
-        image: docker_react-app:latest
+        image: moviesurfer:latest
         command: npm start
         ports:
           - '3000:3000'
