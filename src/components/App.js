@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import Search from './Search';
-import PrivateRoute from './PrivateRoute'
+import Login from './Login';
+import PrivateRoute from './PrivateRoute';
+import { NoMatch } from './NoMatch';
 
 import AppStyles from './styles/App.module.css';
 
@@ -12,8 +14,16 @@ class App extends Component {
         return (
             <Router>
                 <div className={AppStyles.background}>
-                    <Route exact path="/" component={LandingPage} />
-					<PrivateRoute path="/search" isLoggedIn={this.props.isLoggedIn} component={Search}/>
+                    <Switch>
+                        <Route exact path="/" component={LandingPage} />
+						<Route exact path="/login" component={Login} />
+                        <PrivateRoute
+                            path="/search"
+                            isLoggedIn={this.props.isLoggedIn}
+                            component={Search}
+                        />
+                        <Route component={NoMatch} />
+                    </Switch>
                 </div>
             </Router>
         );
