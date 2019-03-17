@@ -9,7 +9,7 @@ import { NoMatch } from './NoMatch';
 
 import AppStyles from './styles/App.module.css';
 
-class App extends Component {
+export class App extends Component {
     render() {
         return (
             <Router>
