@@ -7,7 +7,7 @@ class App extends Component {
     render() {
         return (
             <Router>
-				<Route exact path="/" render={() => <LandingPage loggedIn={this.props.loggedIn}/>} />
+				<Route exact path="/" component={LandingPage} />
 			</Router>
         );
     }
