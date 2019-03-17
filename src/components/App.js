@@ -11,17 +11,16 @@ export class App extends Component {
     render() {
         return (
             <Router>
-                
-                    <Switch>
-                        <Route exact path="/" component={LandingPage} />
-						<Route exact path="/login" component={Login} />
-                        <PrivateRoute
-                            path="/search"
-                            isLoggedIn={this.props.isLoggedIn}
-                            component={Search}
-                        />
-                        <Route component={NoMatch} />
-                    </Switch>
+                <Switch>
+                    <Route exact path="/" component={LandingPage} />
+                    <Route exact path="/login" component={Login} />
+                    <PrivateRoute
+                        path="/search"
+                        isLoggedIn={this.props.isLoggedIn}
+                        component={Search}
+                    />
+                    <Route component={NoMatch} />
+                </Switch>
             </Router>
         );
     }
