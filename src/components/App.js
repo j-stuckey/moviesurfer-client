@@ -7,13 +7,11 @@ import Login from './Login';
 import PrivateRoute from './PrivateRoute';
 import { NoMatch } from './NoMatch';
 
-import AppStyles from './styles/App.module.css';
-
 export class App extends Component {
     render() {
         return (
             <Router>
-                <div className={AppStyles.background}>
+                
                     <Switch>
                         <Route exact path="/" component={LandingPage} />
 						<Route exact path="/login" component={Login} />
@@ -24,7 +22,6 @@ export class App extends Component {
                         />
                         <Route component={NoMatch} />
                     </Switch>
-                </div>
             </Router>
         );
     }
