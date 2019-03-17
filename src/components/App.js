@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LandingPage from './LandingPage'
 
@@ -12,4 +13,9 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = state => ({
+    hasAuthToken: state.auth.authToken !== null,
+    loggedIn: state.auth.currentUser !== null
+});
+
+export default connect(mapStateToProps)(App);
