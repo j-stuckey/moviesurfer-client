@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 class LandingPage extends Component {
     render() {
@@ -9,8 +9,11 @@ class LandingPage extends Component {
         return (
             <div>
                 {isLoggedIn && <Redirect to="/search" />}
-                <h1>Not logged in.</h1>
-                <h2>Welcome page still in development...</h2>
+                <h1>Welcome to Moviesurfer!</h1>
+                <p>Welcome page still in development...</p>
+
+                <Link to="/register">Sign Up</Link>
+				<Link to="/login">Login</Link>
             </div>
         );
     }
