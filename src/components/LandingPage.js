@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 
-class LandingPage extends Component {
+export class LandingPage extends Component {
     render() {
         const { isLoggedIn } = this.props;
 
