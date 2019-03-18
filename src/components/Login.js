@@ -33,6 +33,9 @@ class Login extends Component {
     }
 
     render() {
+		const { username, password } = this.state;
+		const isEnabled = username.length > 0 && password.length > 0;
+
         return (
             <form id="login" onSubmit={this.handleSubmit}>
                 <fieldset>
@@ -56,7 +59,7 @@ class Login extends Component {
                         onChange={this.handlePassword}
                     />
 
-                    <button type="submit">Login</button>
+                    <button type="submit" disabled={!isEnabled}>Login</button>
                 </fieldset>
             </form>
         );
