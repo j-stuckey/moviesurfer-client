@@ -1,5 +1,6 @@
 import React from 'react';
 import { App } from '../App';
+import toJson from 'enzyme-to-json';
 
 import { shallow } from 'enzyme';
 
@@ -11,6 +12,6 @@ describe('<App />', () => {
     });
 
     it('renders correctly', () => {
-        expect(wrapper).toMatchSnapshot();
+        expect(toJson(wrapper)).toMatchSnapshot();
     });
 });
