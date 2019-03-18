@@ -9,11 +9,13 @@ export class LandingPage extends Component {
         return (
             <div>
                 {isLoggedIn && <Redirect to="/search" />}
-                <h1>Welcome to Moviesurfer!</h1>
-                <p>Welcome page still in development...</p>
+                <div id="welcome-page">
+                    <h1>Welcome to Moviesurfer!</h1>
+                    <p>Welcome page still in development...</p>
 
-                <Link to="/register">Sign Up</Link>
-				<Link to="/login">Login</Link>
+                    <Link to="/register">Sign Up</Link>
+                    <Link to="/login">Login</Link>
+                </div>
             </div>
         );
     }
