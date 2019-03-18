@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LandingPage /> renders correctly 1`] = `
+<div>
+  <div
+    id="welcome-page"
+  >
+    <h1>
+      Welcome to Moviesurfer!
+    </h1>
+    <p>
+      Welcome page still in development...
+    </p>
+    <Link
+      replace={false}
+      to="/register"
+    >
+      Sign Up
+    </Link>
+    <Link
+      replace={false}
+      to="/login"
+    >
+      Login
+    </Link>
+  </div>
+</div>
+`;
