@@ -1,0 +1,35 @@
+.mainNav {
+	list-style: none;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	background: #005D70;
+	padding: 10px;
+	min-height: 45px;
+}
+
+.mainNavLeft {
+	list-style: none;
+	display: flex;
+	position: fixed;
+	z-index: 10;
+	width: 100%;
+	top: 0;
+	align-items: center;
+	background: #005D70;
+	height: 45px;
+}
+
+.mainNav a {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.mainNav a:hover {
+    text-decoration: underline;
+}
+
+.mainNav a:last-child {
+	text-decoration: none;
+}
