@@ -35,35 +35,45 @@ class Login extends Component {
     }
 
     render() {
-		const { username, password } = this.state;
-		const isEnabled = username.length > 0 && password.length > 0;
+        const { username, password } = this.state;
+        const isEnabled = username.length > 0 && password.length > 0;
 
         return (
-            <form id="login" onSubmit={this.handleSubmit} className={LoginStyles.form}>
+            <form
+                id="login"
+                onSubmit={this.handleSubmit}
+                className={LoginStyles.form}
+            >
                 <fieldset className={LoginStyles.fieldset}>
                     <legend>Login</legend>
 
                     {this.props.error && <p>{this.props.error}</p>}
 
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username" />
                     <input
-						className={LoginStyles.inputs}
+                        className={LoginStyles.inputs}
                         type="text"
                         placeholder="Username"
                         value={this.state.username}
                         onChange={this.handleUsername}
                     />
 
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password" />
                     <input
-						className={LoginStyles.inputs}
+                        className={LoginStyles.inputs}
                         type="password"
                         placeholder="Password"
                         value={this.state.password}
                         onChange={this.handlePassword}
                     />
 
-                    <button type="submit" disabled={!isEnabled} className={LoginStyles.submit}>Login</button>
+                    <button
+                        type="submit"
+                        disabled={!isEnabled}
+                        className={LoginStyles.submit}
+                    >
+                        Login
+                    </button>
                 </fieldset>
             </form>
         );
@@ -71,9 +81,9 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => {
-	return {
-		error: state.auth.error
-	}
-}
+    return {
+        error: state.auth.error
+    };
+};
 
 export default connect(mapStateToProps)(Login);

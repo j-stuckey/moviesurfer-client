@@ -7,14 +7,15 @@
 }
 
 .inputs {
+	color: gray;
 	border-radius: 5px;
 	padding: 0 10px;
+	margin: 10px auto;
 	width: 100%;
 	max-width: 325px;
 	height: 35px;
-	color: gray;
 }
 
-.inputs, .submit {
+.submit {
 	margin: 0 auto;
 }
