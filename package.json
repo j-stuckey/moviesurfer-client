@@ -4,6 +4,7 @@
     "private": true,
     "dependencies": {
         "jwt-decode": "^2.2.0",
+        "normalize.css": "^8.0.1",
         "react": "^16.8.4",
         "react-dom": "^16.8.4",
         "react-redux": "^6.0.1",
@@ -19,10 +20,12 @@
         "build": "react-scripts build",
         "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject"
-	},
-	"jest": {
-		"snapshotSerializers": ["enzyme-to-json/serializer"]
-	},
+    },
+    "jest": {
+        "snapshotSerializers": [
+            "enzyme-to-json/serializer"
+        ]
+    },
     "devDependencies": {
         "enzyme": "^3.9.0",
         "enzyme-adapter-react-16": "^1.11.2",
