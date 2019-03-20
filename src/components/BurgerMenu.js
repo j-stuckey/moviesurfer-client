@@ -44,7 +44,7 @@ export class BurgerMenu extends React.Component {
 						}
 						onClick={this.handleClick}
 					>	
-						<Link className={styles.link} to="/">Home</Link>
+						<Link className={styles.links} to="/">Home</Link>
 						<Link className={styles.links} to="/login">Login</Link>
 						<Link className={styles.links} to="/register">Register</Link>
 					</div>
