@@ -6,21 +6,25 @@ import Search from './Search';
 import Login from './Login';
 import PrivateRoute from './PrivateRoute';
 import { NoMatch } from './NoMatch';
+import { Header } from './Header';
 
 export class App extends Component {
     render() {
         return (
             <Router>
-                <Switch>
-                    <Route exact path="/" component={LandingPage} />
-                    <Route exact path="/login" component={Login} />
-                    <PrivateRoute
-                        path="/search"
-                        isLoggedIn={this.props.isLoggedIn}
-                        component={Search}
-                    />
-                    <Route component={NoMatch} />
-                </Switch>
+                <React.Fragment>
+                    <Route path="/" component={Header}/>
+                    <Switch>
+                        <Route exact path="/" component={LandingPage} />
+                        <Route exact path="/login" component={Login} />
+                        <PrivateRoute
+                            path="/search"
+                            isLoggedIn={this.props.isLoggedIn}
+                            component={Search}
+                        />
+                        <Route component={NoMatch} />
+                    </Switch>
+                </React.Fragment>
             </Router>
         );
     }

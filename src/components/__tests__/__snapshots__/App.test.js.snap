@@ -2,6 +2,10 @@
 
 exports[`<App /> renders correctly 1`] = `
 <BrowserRouter>
+  <Route
+    component={[Function]}
+    path="/"
+  />
   <Switch>
     <Route
       component={[Function]}
