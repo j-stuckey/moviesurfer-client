@@ -4,8 +4,7 @@
 	justify-content: flex-end;
 	align-items: center;
 	background: #005D70;
-	padding: 10px;
-	min-height: 45px;
+	height: 45px;
 }
 
 .mainNavLeft {
