@@ -11,6 +11,10 @@ body:before {
 	background: linear-gradient(130deg, rgb(36, 34, 128), #1e5863)
 }
 
+* {
+	box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 
+import LoginStyles from './styles/Login.module.css';
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -37,14 +39,15 @@ class Login extends Component {
 		const isEnabled = username.length > 0 && password.length > 0;
 
         return (
-            <form id="login" onSubmit={this.handleSubmit}>
-                <fieldset>
+            <form id="login" onSubmit={this.handleSubmit} className={LoginStyles.form}>
+                <fieldset className={LoginStyles.fieldset}>
                     <legend>Login</legend>
 
-                    {this.props.error && <h1>Hello</h1>}
+                    {this.props.error && <p>{this.props.error}</p>}
 
                     <label htmlFor="username">Username</label>
                     <input
+						className={LoginStyles.inputs}
                         type="text"
                         placeholder="Username"
                         value={this.state.username}
@@ -53,13 +56,14 @@ class Login extends Component {
 
                     <label htmlFor="password">Password</label>
                     <input
+						className={LoginStyles.inputs}
                         type="password"
                         placeholder="Password"
                         value={this.state.password}
                         onChange={this.handlePassword}
                     />
 
-                    <button type="submit" disabled={!isEnabled}>Login</button>
+                    <button type="submit" disabled={!isEnabled} className={LoginStyles.submit}>Login</button>
                 </fieldset>
             </form>
         );

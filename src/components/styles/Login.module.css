@@ -1,0 +1,20 @@
+.fieldset {
+	display: flex;
+	justify-content: center;
+	border: none;
+	margin: 20px auto;
+	max-width: 200px;
+}
+
+.inputs {
+	border-radius: 5px;
+	padding: 0 10px;
+	width: 100%;
+	max-width: 325px;
+	height: 35px;
+	color: gray;
+}
+
+.inputs, .submit {
+	margin: 0 auto;
+}
