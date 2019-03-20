@@ -4,7 +4,7 @@ import { login } from '../actions/auth';
 
 import LoginStyles from './styles/Login.module.css';
 
-class Login extends Component {
+export class Login extends Component {
     constructor(props) {
         super(props);
 
