@@ -1,39 +1,47 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Login /> render correctly, without crashing 1`] = `
-<form
-  id="login"
-  onSubmit={[Function]}
->
-  <fieldset>
-    <legend>
-      Login
-    </legend>
-    <label
-      htmlFor="username"
-    />
-    <input
-      onChange={[Function]}
-      placeholder="Username"
-      type="text"
-      value=""
-    />
-    <label
-      htmlFor="password"
-    />
-    <input
-      onChange={[Function]}
-      placeholder="Password"
-      type="password"
-      value=""
-    />
-    <button
-      className="undefined undefined"
-      disabled={true}
-      type="submit"
-    >
-      Login
-    </button>
-  </fieldset>
-</form>
+<Fragment>
+  <form
+    id="login"
+    onSubmit={[Function]}
+  >
+    <fieldset>
+      <legend>
+        Login
+      </legend>
+      <label
+        htmlFor="username"
+      />
+      <input
+        onChange={[Function]}
+        placeholder="Username"
+        type="text"
+        value=""
+      />
+      <label
+        htmlFor="password"
+      />
+      <input
+        onChange={[Function]}
+        placeholder="Password"
+        type="password"
+        value=""
+      />
+      <button
+        className="undefined undefined"
+        disabled={true}
+        type="submit"
+      >
+        Login
+      </button>
+    </fieldset>
+  </form>
+  <Link
+    replace={false}
+    to="/register"
+  >
+    Don't have an account? Register here.
+  </Link>
+</Fragment>
 `;

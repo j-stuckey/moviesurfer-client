@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { login } from '../actions/auth';
 
 import LoginStyles from './styles/Login.module.css';
-import ButtonStyles from './styles/button.module.css'
+import ButtonStyles from './styles/button.module.css';
 
 export class Login extends Component {
     constructor(props) {
@@ -40,43 +41,50 @@ export class Login extends Component {
         const isEnabled = username.length > 0 && password.length > 0;
 
         return (
-            <form
-                id="login"
-                onSubmit={this.handleSubmit}
-                className={LoginStyles.form}
-            >
-                <fieldset className={LoginStyles.fieldset}>
-                    <legend>Login</legend>
+            <React.Fragment>
+                <form
+                    id="login"
+                    onSubmit={this.handleSubmit}
+                    className={LoginStyles.form}
+                >
+                    <fieldset className={LoginStyles.fieldset}>
+                        <legend>Login</legend>
 
-                    {this.props.error && <p>{this.props.error}</p>}
+                        {this.props.error && <p>{this.props.error}</p>}
 
-                    <label htmlFor="username" />
-                    <input
-                        className={LoginStyles.inputs}
-                        type="text"
-                        placeholder="Username"
-                        value={this.state.username}
-                        onChange={this.handleUsername}
-                    />
+                        <label htmlFor="username" />
+                        <input
+                            className={LoginStyles.inputs}
+                            type="text"
+                            placeholder="Username"
+                            value={this.state.username}
+                            onChange={this.handleUsername}
+                        />
 
-                    <label htmlFor="password" />
-                    <input
-                        className={LoginStyles.inputs}
-                        type="password"
-                        placeholder="Password"
-                        value={this.state.password}
-                        onChange={this.handlePassword}
-                    />
+                        <label htmlFor="password" />
+                        <input
+                            className={LoginStyles.inputs}
+                            type="password"
+                            placeholder="Password"
+                            value={this.state.password}
+                            onChange={this.handlePassword}
+                        />
 
-                    <button
-                        type="submit"
-                        disabled={!isEnabled}
-                        className={`${LoginStyles.submit} ${ButtonStyles.registerButton}`}
-                    >
-                        Login
-                    </button>
-                </fieldset>
-            </form>
+                        <button
+                            type="submit"
+                            disabled={!isEnabled}
+                            className={`${LoginStyles.submit} ${
+                                ButtonStyles.registerButton
+                            }`}
+                        >
+                            Login
+                        </button>
+                    </fieldset>
+                </form>
+                <Link to="/register" className={LoginStyles.registerLink}>
+                    Don't have an account? Register here.
+                </Link>
+            </React.Fragment>
         );
     }
 }

@@ -1,3 +1,8 @@
+.form {
+	display: flex;
+	flex-direction: column;
+}
+
 .fieldset {
 	display: flex;
 	justify-content: center;
@@ -22,4 +27,18 @@
 	margin: 20px auto;
 	min-width: 120px;
 	text-transform: uppercase;
+}
+
+.registerLink {
+	color: rgb(230, 230, 230);
+	font-size: 0.9rem;
+	text-decoration: none;
+	position: relative;
+	top: 40px;
+	text-decoration: underline;
+}
+
+.registerLink:hover {
+	color: red;
+	font-style: italic;
 }
