@@ -33,10 +33,9 @@
 
 .registerButton:hover {
 	background: rgb(170, 9, 9);
-	transform: scale(1.1);
 }
 
 .registerButton:active {
 	box-shadow: none;
-	transform: translateY(4px) scale(1.1);
+	transform: translateY(4px);
 }
