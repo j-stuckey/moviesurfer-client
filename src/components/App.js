@@ -7,6 +7,9 @@ import Login from './Login';
 import PrivateRoute from './PrivateRoute';
 import { NoMatch } from './NoMatch';
 import { Header } from './Header';
+import RegisterPage from './RegisterPage';
+
+import PropTypes from 'prop-types';
 
 export class App extends Component {
     render() {
@@ -17,6 +20,7 @@ export class App extends Component {
                     <Switch>
                         <Route exact path="/" component={LandingPage} />
                         <Route exact path="/login" component={Login} />
+                        <Route exact path="/register" component={RegisterPage} />
                         <PrivateRoute
                             path="/search"
                             isLoggedIn={this.props.isLoggedIn}
@@ -29,6 +33,10 @@ export class App extends Component {
         );
     }
 }
+
+App.propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired
+};
 
 const mapStateToProps = state => ({
     hasAuthToken: state.auth.authToken !== null,
