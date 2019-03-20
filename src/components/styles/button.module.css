@@ -21,6 +21,7 @@
 
 .registerButton {
 	display: inline-block;
+	border: none;
 	color: white;
 	text-decoration: none;
 	background: red;

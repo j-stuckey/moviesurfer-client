@@ -28,6 +28,7 @@ exports[`<Login /> render correctly, without crashing 1`] = `
       value=""
     />
     <button
+      className="undefined undefined"
       disabled={true}
       type="submit"
     >

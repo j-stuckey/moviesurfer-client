@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 
 import LoginStyles from './styles/Login.module.css';
+import ButtonStyles from './styles/button.module.css'
 
 export class Login extends Component {
     constructor(props) {
@@ -70,7 +71,7 @@ export class Login extends Component {
                     <button
                         type="submit"
                         disabled={!isEnabled}
-                        className={LoginStyles.submit}
+                        className={`${LoginStyles.submit} ${ButtonStyles.registerButton}`}
                     >
                         Login
                     </button>
