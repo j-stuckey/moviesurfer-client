@@ -17,6 +17,11 @@ exports[`<App /> renders correctly 1`] = `
       exact={true}
       path="/login"
     />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/register"
+    />
     <Connect(PrivateRoute)
       component={[Function]}
       path="/search"
