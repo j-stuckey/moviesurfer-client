@@ -1,11 +1,3 @@
-# FROM node:11
-
-# COPY . /usr/src/app
-
-# WORKDIR /usr/src/app
-
-# RUN npm install
-
 FROM node:11
 
 # Install `serve`.
