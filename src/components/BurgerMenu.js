@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-
 import styles from './styles/BurgerMenu.module.css';
+import PropTypes from 'prop-types';
 
 export class BurgerMenu extends React.Component {
     constructor(props) {
@@ -51,5 +50,11 @@ export class BurgerMenu extends React.Component {
         );
     }
 }
+
+BurgerMenu.propTypes = {
+    children: PropTypes.arrayOf(PropTypes.element)
+};
+
+
 
 export default connect()(BurgerMenu);
