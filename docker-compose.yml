@@ -1,7 +1,9 @@
 version: '3'
 services:
     front-end:
-        build: .
+        build:
+          context: .
+          target: base
         image: moviesurfer:latest
         command: npm run dev
         ports:
