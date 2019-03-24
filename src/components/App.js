@@ -6,7 +6,7 @@ import Search from './Search';
 import Login from './Login';
 import PrivateRoute from './PrivateRoute';
 import { NoMatch } from './NoMatch';
-import { Header } from './Header';
+import Header from './Header';
 import RegisterPage from './RegisterPage';
 
 import PropTypes from 'prop-types';

@@ -1,17 +1,26 @@
 FROM node:11
 
-# Install `serve`.
-RUN npm install -g serve
+COPY . /usr/src/app
 
-# Install all dependencies of the current project.
-COPY package.json package.json
+WORKDIR /usr/src/app
+
 RUN npm install
 
-# Copy all local files into the image.
-COPY . .
 
-# Build for production.
-RUN npm run build
 
-# serve static files in dist folder
-CMD serve -p $PORT -s build
+# # Production
+# # Install `serve`.
+# RUN npm install -g serve
+
+# # Install all dependencies of the current project.
+# COPY package.json package.json
+# RUN npm install
+
+# # Copy all local files into the image.
+# COPY . .
+
+# # Build for production.
+# RUN npm run build
+
+# # serve static files in dist folder
+# CMD serve -p $PORT -s build
