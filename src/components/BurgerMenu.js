@@ -35,7 +35,7 @@ export class BurgerMenu extends React.Component {
                     <div className={styles.line3} />
                 </button>
 
-                <Modal className={this.state.show ? styles.modal : null}>
+                <div className={this.state.show ? styles.modal : null}>
                     <div
                         className={
                             this.state.show
@@ -46,16 +46,10 @@ export class BurgerMenu extends React.Component {
                     >
                         {this.props.children}
                     </div>
-                </Modal>
+                </div>
             </span>
         );
     }
 }
-
-
-
-const Modal = props => {
-    return <div className={props.className}>{props.children}</div>;
-};
 
 export default connect()(BurgerMenu);
