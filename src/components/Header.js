@@ -3,9 +3,11 @@ import styles from './styles/Header.module.css';
 import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { clearAuthToken } from '../local-storage';
-
+import { Link } from 'react-router-dom';
 import { BurgerMenu } from './BurgerMenu';
 import buttonStyles from './styles/button.module.css';
+
+import PropTypes from 'prop-types';
 
 export class Header extends React.Component {
     constructor(props) {
@@ -21,7 +23,7 @@ export class Header extends React.Component {
         clearAuthToken();
     };
 
-    render() {
+    render() {		
         return (
             <header className={styles.header}>
                 <nav
@@ -43,13 +45,23 @@ export class Header extends React.Component {
                             <BurgerMenu />
                         </span>
                     ) : (
-                        <BurgerMenu />
+                        <BurgerMenu>
+                            <Link className={styles.links} to="/">Home</Link>
+                            <Link className={styles.links} to="/login">Login</Link>
+                            <Link className={styles.links} to="/register">Register</Link>
+                        </BurgerMenu>
                     )}
                 </nav>
             </header>
         );
     }
 }
+
+
+Header.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired
+};
 
 const mapStateToProps = state => {
     return {
