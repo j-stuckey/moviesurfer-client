@@ -22,9 +22,9 @@
 .registerButton {
 	display: inline-block;
 	border: none;
-	color: white;
+	color: rgb(81, 185, 245);
 	text-decoration: none;
-	background: red;
+	background: rgb(2, 8, 15);	
 	border-radius: 5px;
 	padding: 10px 30px;
 	margin-left: 20px;
