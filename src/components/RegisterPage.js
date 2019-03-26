@@ -24,14 +24,11 @@ export class RegisterPage extends Component {
         let change = {};
 
         change[e.target.name] = e.target.value;
-        console.log({ change, state: this.state });
         this.setState(change);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log('%c Submitted', 'color: red; font-weight: bold;');
-        console.log({ state: this.state });
     }
 
     validate(username, password, confirmPassword) {
