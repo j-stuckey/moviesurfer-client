@@ -32,7 +32,8 @@ export class Header extends React.Component {
                             ? styles.mainNavLeft
                             : styles.mainNav
                     }
-                >
+                >	
+                    <Link to="/" className={styles.logo}><img src={require('../assets/home.png') } alt="home icon" /></Link>
                     {this.props.isLoggedIn ? (
                         <span>
                             <button
