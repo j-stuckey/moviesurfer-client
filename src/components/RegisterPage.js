@@ -40,14 +40,13 @@ export class RegisterPage extends Component {
         };
     }
 
-    // passes in the text field, 
+    // passes in the text field,
     // the event for blurring
     handleBlur = field => event => {
         this.setState({
             touched: {
                 ...this.state.touched,
-				
-				
+
                 [field]: true
             }
         });
@@ -74,7 +73,9 @@ export class RegisterPage extends Component {
 
                     <label htmlFor="username">Username</label>
                     <input
-                        className={shouldMarkError('username') ? styles.error : '' }
+                        className={
+                            shouldMarkError('username') ? styles.error : ''
+                        }
                         onBlur={this.handleBlur('username')}
                         name="username"
                         placeholder="Username"
@@ -83,7 +84,9 @@ export class RegisterPage extends Component {
                     />
                     <label htmlFor="password">Password</label>
                     <input
-                        className={shouldMarkError('password') ? styles.error : '' }
+                        className={
+                            shouldMarkError('password') ? styles.error : ''
+                        }
                         onBlur={this.handleBlur('password')}
                         name="password"
                         type="password"
@@ -94,7 +97,11 @@ export class RegisterPage extends Component {
 
                     <label htmlFor="confirmPassword">Confirm Password</label>
                     <input
-                        className={shouldMarkError('confirmPassword') ? styles.error : '' }
+                        className={
+                            shouldMarkError('confirmPassword')
+                                ? styles.error
+                                : ''
+                        }
                         onBlur={this.handleBlur('confirmPassword')}
                         name="confirmPassword"
                         type="password"
