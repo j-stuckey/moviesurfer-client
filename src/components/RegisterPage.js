@@ -43,10 +43,14 @@ export class RegisterPage extends Component {
         };
     }
 
+    // passes in the text field, 
+    // the event for blurring
     handleBlur = field => event => {
         this.setState({
             touched: {
                 ...this.state.touched,
+				
+				
                 [field]: true
             }
         });
@@ -82,6 +86,8 @@ export class RegisterPage extends Component {
                     />
                     <label htmlFor="password">Password</label>
                     <input
+                        className={shouldMarkError('password') ? styles.error : '' }
+                        onBlur={this.handleBlur('password')}
                         name="password"
                         type="password"
                         placeholder="Password"
@@ -91,6 +97,8 @@ export class RegisterPage extends Component {
 
                     <label htmlFor="confirmPassword">Confirm Password</label>
                     <input
+                        className={shouldMarkError('confirmPassword') ? styles.error : '' }
+                        onBlur={this.handleBlur('confirmPassword')}
                         name="confirmPassword"
                         type="password"
                         placeholder="Confirm password"
