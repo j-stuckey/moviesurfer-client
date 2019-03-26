@@ -56,19 +56,17 @@
 	left: 0;
 	top: 45px;
 	width: 100%; /* Full width */
-	height: 100%; /* Full height */
 	overflow: auto; /* Enable scroll if needed */
 }
 
 .modalContent {
 	transition: ease-in-out 0.5s;
-	width: 125px;
-	height: 100%;
+	width: 100%;
 	position: fixed;
 	/* top: 50px; */
 	right: 0;
 	/* background: rgb(233, 233, 233); */
-	background: #F4D58D;
+	background: #40798C;
 }
 
 .modalContent a {
