@@ -1,34 +1,40 @@
 .logo {
-	color: white;
-	margin: 0 30px;
-	background: transparent;
+    color: white;
+    background: transparent;
 	border: none;
+	position: absolute;
+	left: 15px;
+}
+
+.topLink {
+	margin: 0 20px
 }
 
 .mainNav {
-	list-style: none;
+    list-style: none;
 	display: flex;
-	align-items: center;
-	background: rgb(2, 8, 15);
-	height: 45px;
+	justify-content: flex-end;
+    align-items: center;
+    background: rgb(2, 8, 15);
+    height: 45px;
 }
 
 .mainNavLeft {
-	list-style: none;
-	display: flex;
-	position: fixed;
-	z-index: 10;
-	width: 100%;
-	top: 0;
-	align-items: center;
-	background: #005D70;
-	height: 45px;
+    list-style: none;
+    display: flex;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    top: 0;
+    align-items: center;
+    background: #005d70;
+    height: 45px;
 }
 
 .mainNav a {
-	color: white;
-	font-weight: bold;
-	text-decoration: none;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .mainNav a:hover {
@@ -36,5 +42,5 @@
 }
 
 .mainNav a:last-child {
-	text-decoration: none;
+    text-decoration: none;
 }

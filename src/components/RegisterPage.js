@@ -9,6 +9,7 @@ export class RegisterPage extends Component {
             username: '',
             password: '',
             confirmPassword: '',
+            error: null,
             touched: {
                 username: false,
                 password: false,
@@ -29,6 +30,13 @@ export class RegisterPage extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        console.log({ state: this.state });
+		
+        if (this.state.username.length < 3){
+            this.setState({ error: 'Username must be at least 3 characters'});
+        } else {
+            this.setState({ error: null });
+        }
     }
 
     validate(username, password, confirmPassword) {
@@ -64,13 +72,15 @@ export class RegisterPage extends Component {
             this.state.password,
             this.state.confirmPassword
         );
+		
+        
         const isEnabled = !Object.keys(errors).some(x => errors[x]);
 
         return (
             <form onSubmit={this.handleSubmit}>
                 <fieldset>
                     <legend>Register</legend>
-
+                    <p>{this.state.error}</p>
                     <label htmlFor="username">Username</label>
                     <input
                         className={

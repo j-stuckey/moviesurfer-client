@@ -14,8 +14,12 @@ export class Header extends React.Component {
         super(props);
 
         this.state = {
-            clicked: false
+            clicked: false,
+            width: 0,
+            height: 0
         };
+
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
     logOut = event => {
@@ -23,7 +27,20 @@ export class Header extends React.Component {
         clearAuthToken();
     };
 
-    render() {		
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
+
+    render() {
         return (
             <header className={styles.header}>
                 <nav
@@ -32,8 +49,13 @@ export class Header extends React.Component {
                             ? styles.mainNavLeft
                             : styles.mainNav
                     }
-                >	
-                    <Link to="/" className={styles.logo}><img src={require('../assets/home.png') } alt="home icon" /></Link>
+                >
+                    <Link to="/" className={styles.logo}>
+                        <img
+                            src={require('../assets/home.png')}
+                            alt="home icon"
+                        />
+                    </Link>
                     {this.props.isLoggedIn ? (
                         <span>
                             <button
@@ -46,18 +68,38 @@ export class Header extends React.Component {
                             <BurgerMenu />
                         </span>
                     ) : (
-                        <BurgerMenu>
-                            <Link className={styles.links} to="/">Home</Link>
-                            <Link className={styles.links} to="/login">Login</Link>
-                            <Link className={styles.links} to="/register">Register</Link>
-                        </BurgerMenu>
+                        <span>
+                            {this.state.width > 400 && (
+                                <span className={styles.linksContainer}>
+                                    <Link className={`${styles.topLink}`} to="/login">
+                                        Login
+                                    </Link>
+                                    <Link
+                                        className={`${styles.topLink}`}
+                                        to="/register"
+                                    >
+                                        Register
+                                    </Link>
+                                </span>
+                            )}
+                            <BurgerMenu>
+                                <Link className={styles.links} to="/">
+                                    Home
+                                </Link>
+                                <Link className={styles.links} to="/login">
+                                    Login
+                                </Link>
+                                <Link className={styles.links} to="/register">
+                                    Register
+                                </Link>
+                            </BurgerMenu>
+                        </span>
                     )}
                 </nav>
             </header>
         );
     }
 }
-
 
 Header.propTypes = {
     dispatch: PropTypes.func.isRequired,
