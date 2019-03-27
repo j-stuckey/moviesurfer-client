@@ -10,35 +10,10 @@ import buttonStyles from './styles/button.module.css';
 import PropTypes from 'prop-types';
 
 export class Header extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            clicked: false,
-            width: 0,
-            height: 0
-        };
-
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-    }
-
     logOut = event => {
         this.props.dispatch(clearAuth());
         clearAuthToken();
     };
-
-    componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener('resize', this.updateWindowDimensions);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.updateWindowDimensions);
-    }
-
-    updateWindowDimensions() {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
 
     render() {
         return (
@@ -69,23 +44,22 @@ export class Header extends React.Component {
                         </span>
                     ) : (
                         <span>
-                            {this.state.width > 400 && (
-                                <span className={styles.linksContainer}>
-                                    <Link className={`${styles.topLink}`} to="/login">
-                                        Login
-                                    </Link>
-                                    <Link
-                                        className={`${styles.topLink}`}
-                                        to="/register"
-                                    >
-                                        Register
-                                    </Link>
-                                </span>
-                            )}
-                            <BurgerMenu>
-                                <Link className={styles.links} to="/">
-                                    Home
+                            <span className={styles.linksContainer}>
+                                <Link
+                                    className={`${styles.topLink}`}
+                                    to="/login"
+                                >
+                                    Login
                                 </Link>
+                                <Link
+                                    className={`${styles.topLink}`}
+                                    to="/register"
+                                >
+                                    Register
+                                </Link>
+                            </span>
+
+                            <BurgerMenu>
                                 <Link className={styles.links} to="/login">
                                     Login
                                 </Link>
