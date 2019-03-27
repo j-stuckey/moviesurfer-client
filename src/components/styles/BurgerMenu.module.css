@@ -70,7 +70,6 @@
 	right: 0;
 	/* background: rgb(233, 233, 233); */
 	background: #40798C;
-	transition: 2s;
 }
 
 .modalContent a {
@@ -90,10 +89,4 @@
 
 .modalContentHide {
 	display: none;
-}
-
-@media only screen and (min-width: 400px) {
-    .burger {
-        display: none;
-    }
 }

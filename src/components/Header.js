@@ -6,6 +6,7 @@ import { clearAuthToken } from '../local-storage';
 import { Link } from 'react-router-dom';
 import { BurgerMenu } from './BurgerMenu';
 import buttonStyles from './styles/button.module.css';
+import MediaQuery from 'react-responsive';
 
 import PropTypes from 'prop-types';
 
@@ -40,11 +41,13 @@ export class Header extends React.Component {
                             >
                                 Logout
                             </button>
-                            <BurgerMenu />
+                            <MediaQuery query="(max-width: 400px)">
+                            	<BurgerMenu />
+                            </MediaQuery>
                         </span>
                     ) : (
                         <span>
-                            <span className={styles.linksContainer}>
+                            <MediaQuery query="(min-width: 400px)">
                                 <Link
                                     className={`${styles.topLink}`}
                                     to="/login"
@@ -57,16 +60,17 @@ export class Header extends React.Component {
                                 >
                                     Register
                                 </Link>
-                            </span>
-
-                            <BurgerMenu>
-                                <Link className={styles.links} to="/login">
+                            </MediaQuery>
+                            <MediaQuery query="(max-width: 400px)">
+                                <BurgerMenu>
+                                    <Link className={styles.links} to="/login">
                                     Login
-                                </Link>
-                                <Link className={styles.links} to="/register">
+                                    </Link>
+                                    <Link className={styles.links} to="/register">
                                     Register
-                                </Link>
-                            </BurgerMenu>
+                                    </Link>
+                                </BurgerMenu>
+                            </MediaQuery>
                         </span>
                     )}
                 </nav>

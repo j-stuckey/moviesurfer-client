@@ -8,6 +8,7 @@
         "react": "^16.8.4",
         "react-dom": "^16.8.4",
         "react-redux": "^6.0.1",
+        "react-responsive": "^6.1.1",
         "react-router": "^4.3.1",
         "react-router-dom": "^4.3.1",
         "react-scripts-cssmodules": "1.1.50",
@@ -16,8 +17,8 @@
         "webpack-dev-server": "^3.1.11"
     },
     "scripts": {
-		"dev": "react-scripts start",
-        "start": "serve -p $PORT -s build",		
+        "dev": "react-scripts start",
+        "start": "serve -p $PORT -s build",
         "build": "react-scripts build",
         "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject"
