@@ -1,132 +1,74 @@
 import React, { Component } from 'react';
-import styles from './styles/Register.module.css';
+import { connect } from 'react-redux';
+import { reduxForm, Field } from 'redux-form';
+import { Link } from 'react-router-dom';
+import { required, passwordsMatch, length } from '../validators';
+import Input from './Input';
+import { registerUser } from '../actions/users';
 
-export class RegisterPage extends Component {
-    constructor(props) {
-        super(props);
+const passwordLength = length({ min: 8, max: 72 });
+const usernameLength = length({ min: 3, max: 32 });
 
-        this.state = {
-            username: '',
-            password: '',
-            confirmPassword: '',
-            error: null,
-            touched: {
-                username: false,
-                password: false,
-                confirmPassword: false
-            }
-        };
+class RegisterPage extends Component {
+    handleFormSubmit = values => {
+        const user = values;
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleChange(e) {
-        let change = {};
-
-        change[e.target.name] = e.target.value;
-        this.setState(change);
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        console.log({ state: this.state });
-		
-        if (this.state.username.length < 3){
-            this.setState({ error: 'Username must be at least 3 characters'});
-        } else {
-            this.setState({ error: null });
-        }
-    }
-
-    validate(username, password, confirmPassword) {
-        // true means invalid, so our conditions got reversed
-        return {
-            username: username.length === 0,
-            password: password.length === 0,
-            confirmPassword: confirmPassword.length === 0
-        };
-    }
-
-    // passes in the text field,
-    // the event for blurring
-    handleBlur = field => event => {
-        this.setState({
-            touched: {
-                ...this.state.touched,
-
-                [field]: true
-            }
-        });
+        this.props
+            .dispatch(registerUser(user))
+            .then(() => this.props.history.push('/dashboard'));
     };
 
     render() {
-        const shouldMarkError = field => {
-            const hasError = errors[field];
-            const shouldShow = this.state.touched[field];
-            return hasError ? shouldShow : false;
-        };
-
-        const errors = this.validate(
-            this.state.username,
-            this.state.password,
-            this.state.confirmPassword
-        );
-		
-        
-        const isEnabled = !Object.keys(errors).some(x => errors[x]);
-
         return (
-            <form onSubmit={this.handleSubmit}>
-                <fieldset>
-                    <legend>Register</legend>
-                    <p>{this.state.error}</p>
-                    <label htmlFor="username">Username</label>
-                    <input
-                        className={
-                            shouldMarkError('username') ? styles.error : ''
-                        }
-                        onBlur={this.handleBlur('username')}
-                        name="username"
-                        placeholder="Username"
-                        value={this.state.username}
-                        onChange={this.handleChange}
-                    />
-                    <label htmlFor="password">Password</label>
-                    <input
-                        className={
-                            shouldMarkError('password') ? styles.error : ''
-                        }
-                        onBlur={this.handleBlur('password')}
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                        value={this.state.password}
-                        onChange={this.handleChange}
-                    />
+            <main>
+                <form
+                    onSubmit={this.props.handleSubmit(values =>
+                        this.handleFormSubmit(values)
+                    )}
+                >
+                    <fieldset>
+                        <legend>Register</legend>
+                        <Field
+                            name="username"
+                            type="text"
+                            component={Input}
+                            placeholder="Username"
+                            validate={[required, usernameLength]}
+                        />
+                        <Field
+                            name="password"
+                            type="password"
+                            component={Input}
+                            placeholder="Password"
+                            validate={[required, passwordLength]}
+                        />
+                        <Field
+                            name="confirmPassword"
+                            type="password"
+                            component={Input}
+                            placeholder="Confirm Password"
+                            validate={[
+                                required,
+                                passwordsMatch,
+                                passwordLength
+                            ]}
+                        />
+                        <button type="submit">
+                            Sign up
+                        </button>
+                    </fieldset>
+                </form>
 
-                    <label htmlFor="confirmPassword">Confirm Password</label>
-                    <input
-                        className={
-                            shouldMarkError('confirmPassword')
-                                ? styles.error
-                                : ''
-                        }
-                        onBlur={this.handleBlur('confirmPassword')}
-                        name="confirmPassword"
-                        type="password"
-                        placeholder="Confirm password"
-                        value={this.state.confirmPassword}
-                        onChange={this.handleChange}
-                    />
-
-                    <button type="submit" disabled={!isEnabled}>
-                        Submit
-                    </button>
-                </fieldset>
-            </form>
+                <Link to="/login">
+                    Already have an account? Login here.
+                </Link>
+            </main>
         );
     }
 }
 
-export default RegisterPage;
+RegisterPage = connect()(RegisterPage);
+
+export default reduxForm({
+    form: 'register'
+})(RegisterPage);
