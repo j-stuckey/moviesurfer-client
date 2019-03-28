@@ -30,10 +30,14 @@
 }
 
 .registerLink {
-	color: rgb(230, 230, 230);
+	/* color: rgb(230, 230, 230); */
 	font-size: 0.9rem;
 	text-decoration: none;
 	text-decoration: underline;
+}
+
+.registerLink:visited {
+	color: #005d70;
 }
 
 .registerLink:hover {
