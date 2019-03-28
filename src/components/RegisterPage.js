@@ -5,17 +5,22 @@ import { Link } from 'react-router-dom';
 import { required, passwordsMatch, length } from '../validators';
 import Input from './Input';
 import { registerUser } from '../actions/users';
+import PropTypes from 'prop-types';
 
 const passwordLength = length({ min: 8, max: 72 });
 const usernameLength = length({ min: 3, max: 32 });
 
 class RegisterPage extends Component {
+    constructor(props){
+        super(props);
+		
+    }
     handleFormSubmit = values => {
         const user = values;
 
         this.props
             .dispatch(registerUser(user))
-            .then(() => this.props.history.push('/dashboard'));
+            .then(() => this.props.history.push('/search'));
     };
 
     render() {
@@ -67,8 +72,16 @@ class RegisterPage extends Component {
     }
 }
 
-RegisterPage = connect()(RegisterPage);
+RegisterPage.propTypes = { 
+    dispatch: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+	
+});
+
+RegisterPage = connect(mapStateToProps)(RegisterPage);
 
 export default reduxForm({
-    form: 'register'
+    form: 'RegisterPage'
 })(RegisterPage);
