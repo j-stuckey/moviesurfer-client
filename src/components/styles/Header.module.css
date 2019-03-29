@@ -2,7 +2,7 @@
     color: white;
     background: transparent;
 	border: none;
-	position: absolute;
+	position: fixed;
 	left: 15px;
 }
 
