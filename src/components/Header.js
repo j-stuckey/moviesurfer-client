@@ -14,6 +14,7 @@ export class Header extends React.Component {
     logOut = event => {
         this.props.dispatch(clearAuth());
         clearAuthToken();
+        this.props.history.push('/login');
     };
 
     render() {
@@ -27,7 +28,7 @@ export class Header extends React.Component {
                     <img src={require('../assets/home.png')} alt="home icon" />
                 </Link>
                 {this.props.isLoggedIn ? (
-                    <span>
+                    <React.Fragment>
                         <button
                             onClick={this.logOut}
                             type="button"
@@ -41,9 +42,9 @@ export class Header extends React.Component {
                                 <Link to="/test">Test</Link>
                             </BurgerMenu>
                         </MediaQuery>
-                    </span>
+                    </React.Fragment>
                 ) : (
-                    <span>
+                    <React.Fragment>
                         <MediaQuery query="(min-width: 400px)">
                             <Link className={`${styles.topLink}`} to="/login">
                                 Login
@@ -55,6 +56,7 @@ export class Header extends React.Component {
                                 Register
                             </Link>
                         </MediaQuery>
+
                         <MediaQuery query="(max-width: 400px)">
                             <BurgerMenu>
                                 <Link className={styles.links} to="/login">
@@ -65,7 +67,7 @@ export class Header extends React.Component {
                                 </Link>
                             </BurgerMenu>
                         </MediaQuery>
-                    </span>
+                    </React.Fragment>
                 )}
             </nav>
         );
