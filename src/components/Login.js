@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { login } from '../actions/auth';
 
 import LoginStyles from './styles/Login.module.css';
@@ -15,21 +15,18 @@ export class Login extends Component {
             password: ''
         };
 
-        this.handleUsername = this.handleUsername.bind(this);
-        this.handlePassword = this.handlePassword.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleUsername(event) {
-        this.setState({ username: event.target.value });
-    }
-
-    handlePassword(event) {
-        this.setState({ password: event.target.value });
+    handleChange(e){
+        this.setState({ [e.target.name]: e.target.value });
     }
 
     handleSubmit(event) {
         event.preventDefault();
+		
+        console.log({ state: this.state });
 
         this.props
             .dispatch(login(this.state.username, this.state.password))
@@ -42,6 +39,7 @@ export class Login extends Component {
 
         return (
             <React.Fragment>
+                {this.props.isLoggedIn && <Redirect to="/search" />}
                 <form
                     id="login"
                     onSubmit={this.handleSubmit}
@@ -55,19 +53,21 @@ export class Login extends Component {
                         <label htmlFor="username" />
                         <input
                             className={LoginStyles.inputs}
+                            name="username"
                             type="text"
                             placeholder="Username"
                             value={this.state.username}
-                            onChange={this.handleUsername}
+                            onChange={this.handleChange}
                         />
 
                         <label htmlFor="password" />
                         <input
                             className={LoginStyles.inputs}
+                            name="password"
                             type="password"
                             placeholder="Password"
                             value={this.state.password}
-                            onChange={this.handlePassword}
+                            onChange={this.handleChange}
                         />
 
                         <button
@@ -91,7 +91,8 @@ export class Login extends Component {
 
 const mapStateToProps = state => {
     return {
-        error: state.auth.error
+        error: state.auth.error,
+        isLoggedIn: state.auth.currentUser !== null
     };
 };
 
