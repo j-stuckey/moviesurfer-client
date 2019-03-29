@@ -7,11 +7,8 @@ import { shallow } from 'enzyme';
 describe('<App />', () => {
     const wrapper = shallow(<App />);
 
-    it('renders without crashing', () => {
+    it('render correctly, without crashing', () => {
         expect(wrapper.exists()).toBe(true);
-    });
-
-    it('renders correctly', () => {
         expect(toJson(wrapper)).toMatchSnapshot();
     });
 });

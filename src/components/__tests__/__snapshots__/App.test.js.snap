@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<App /> renders correctly 1`] = `
+exports[`<App /> render correctly, without crashing 1`] = `
 <BrowserRouter>
   <Route
     component={[Function]}
@@ -18,7 +18,32 @@ exports[`<App /> renders correctly 1`] = `
       path="/login"
     />
     <Route
-      component={[Function]}
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "WrappedComponent": [Function],
+          "defaultProps": Object {
+            "destroyOnUnmount": true,
+            "enableReinitialize": false,
+            "forceUnregisterOnUnmount": false,
+            "form": "RegisterPage",
+            "getFormState": [Function],
+            "keepDirtyOnReinitialize": false,
+            "persistentSubmitErrors": false,
+            "pure": true,
+            "shouldAsyncValidate": [Function],
+            "shouldError": [Function],
+            "shouldValidate": [Function],
+            "shouldWarn": [Function],
+            "touchOnBlur": true,
+            "touchOnChange": false,
+            "updateUnregisteredFields": false,
+          },
+          "displayName": "ReduxForm",
+          "render": [Function],
+          Symbol(Symbol.hasInstance): [Function],
+        }
+      }
       exact={true}
       path="/register"
     />
