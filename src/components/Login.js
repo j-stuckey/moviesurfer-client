@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { login } from '../actions/auth';
-
 import LoginStyles from './styles/Login.module.css';
 import ButtonStyles from './styles/button.module.css';
+import PropTypes from 'prop-types';
 
 export class Login extends Component {
     constructor(props) {
@@ -19,14 +19,12 @@ export class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(e){
+    handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
 
     handleSubmit(event) {
         event.preventDefault();
-		
-        console.log({ state: this.state });
 
         this.props
             .dispatch(login(this.state.username, this.state.password))
@@ -36,7 +34,7 @@ export class Login extends Component {
     render() {
         const { username, password } = this.state;
         const isEnabled = username.length > 0 && password.length > 0;
-
+        
         return (
             <React.Fragment>
                 {this.props.isLoggedIn && <Redirect to="/search" />}
@@ -88,6 +86,12 @@ export class Login extends Component {
         );
     }
 }
+
+Login.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    error: PropTypes.string,
+    isLoggedIn: PropTypes.bool.isRequired
+};
 
 const mapStateToProps = state => {
     return {
