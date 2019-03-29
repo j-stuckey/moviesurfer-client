@@ -14,67 +14,62 @@ export class Header extends React.Component {
     logOut = event => {
         this.props.dispatch(clearAuth());
         clearAuthToken();
+        this.props.history.push('/login');
     };
 
     render() {
         return (
-            <header className={styles.header}>
-                <nav
-                    className={
-                        this.props.isLoggedIn
-                            ? styles.mainNavLeft
-                            : styles.mainNav
-                    }
-                >
-                    <Link to="/" className={styles.logo}>
-                        <img
-                            src={require('../assets/home.png')}
-                            alt="home icon"
-                        />
-                    </Link>
-                    {this.props.isLoggedIn ? (
-                        <span>
-                            <button
-                                onClick={this.logOut}
-                                type="button"
-                                className={buttonStyles.logoutButton}
+            <nav
+                className={
+                    this.props.isLoggedIn ? styles.mainNavLeft : styles.mainNav
+                }
+            >
+                <Link to="/" className={styles.logo}>
+                    <img src={require('../assets/home.png')} alt="home icon" />
+                </Link>
+                {this.props.isLoggedIn ? (
+                    <React.Fragment>
+                        <button
+                            onClick={this.logOut}
+                            type="button"
+                            className={buttonStyles.logoutButton}
+                        >
+                            Logout
+                        </button>
+                        <MediaQuery query="(max-width: 400px)">
+                            <BurgerMenu>
+                                <Link to="/">Home</Link>
+                                <Link to="/test">Test</Link>
+                            </BurgerMenu>
+                        </MediaQuery>
+                    </React.Fragment>
+                ) : (
+                    <React.Fragment>
+                        <MediaQuery query="(min-width: 400px)">
+                            <Link className={`${styles.topLink}`} to="/login">
+                                Login
+                            </Link>
+                            <Link
+                                className={`${styles.topLink}`}
+                                to="/register"
                             >
-                                Logout
-                            </button>
-                            <MediaQuery query="(max-width: 400px)">
-                            	<BurgerMenu />
-                            </MediaQuery>
-                        </span>
-                    ) : (
-                        <span>
-                            <MediaQuery query="(min-width: 400px)">
-                                <Link
-                                    className={`${styles.topLink}`}
-                                    to="/login"
-                                >
+                                Register
+                            </Link>
+                        </MediaQuery>
+
+                        <MediaQuery query="(max-width: 400px)">
+                            <BurgerMenu>
+                                <Link className={styles.links} to="/login">
                                     Login
                                 </Link>
-                                <Link
-                                    className={`${styles.topLink}`}
-                                    to="/register"
-                                >
+                                <Link className={styles.links} to="/register">
                                     Register
                                 </Link>
-                            </MediaQuery>
-                            <MediaQuery query="(max-width: 400px)">
-                                <BurgerMenu>
-                                    <Link className={styles.links} to="/login">
-                                    Login
-                                    </Link>
-                                    <Link className={styles.links} to="/register">
-                                    Register
-                                    </Link>
-                                </BurgerMenu>
-                            </MediaQuery>
-                        </span>
-                    )}
-                </nav>
-            </header>
+                            </BurgerMenu>
+                        </MediaQuery>
+                    </React.Fragment>
+                )}
+            </nav>
         );
     }
 }

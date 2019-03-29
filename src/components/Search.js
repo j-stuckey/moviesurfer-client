@@ -27,7 +27,6 @@ class Search extends React.Component {
     render() {
         return (
             <section>
-				{/* { !this.props.isLoggedIn && <Redirect to="/" /> } */}
 				
                 <form onSubmit={this.handleSubmit}>
                     <label htmlFor="search">Search</label>
