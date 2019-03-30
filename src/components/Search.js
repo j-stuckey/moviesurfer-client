@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import styles from './styles/Search.module.css';
+
 // import { fetchMovies } from '../actions/movies';
 // import SearchResult from './search-result';
+
+import glass from '../assets/magnifying-glass.png';
 
 class Search extends React.Component {
     constructor(props) {
@@ -26,25 +30,22 @@ class Search extends React.Component {
 
     render() {
         return (
-            <section>
-				
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="search">Search</label>
+            <React.Fragment>
+                <div className={styles.searchContainer}>
+                    <label htmlFor="search" />
                     <input
+                        className={styles.searchBar}
                         type="text"
                         name="search"
-                        placeholder="Which TV show or movie are you searching for?"
+                        placeholder="Search"
                         value={this.state.searchTerm}
                         onChange={this.handleChange}
                     />
-                </form>
-                {/* {this.props.search ? (
-                    <div>
-                        <h1>{this.props.search[0].Title}</h1>
+                    <div className={styles.semicircle}>
+                        <input type="image" src={glass} className={styles.magnifier}/>
                     </div>
-				) : null} */}
-                {this.props.search ? this.props.search : null}
-            </section>
+                </div>
+            </React.Fragment>
         );
     }
 }
