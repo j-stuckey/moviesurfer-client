@@ -11,12 +11,11 @@
 
 .logoutButton:hover {
 	background: rgb(170, 9, 9);
-	transform: scale(1.1);
 }
 
 .logoutButton:active {
 	box-shadow: none;
-	transform: translateY(4px) scale(1.1);
+	transform: translateY(4px);
 }
 
 .registerButton {

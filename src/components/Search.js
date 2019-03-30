@@ -42,7 +42,7 @@ class Search extends React.Component {
                         onChange={this.handleChange}
                     />
                     <div className={styles.semicircle}>
-                        <input type="image" src={glass} className={styles.magnifier}/>
+                        <input type="image" alt="magnifying glass" src={glass} className={styles.magnifier}/>
                     </div>
                 </div>
             </React.Fragment>
