@@ -44,7 +44,7 @@ export class Login extends Component {
                     className={LoginStyles.form}
                 >
                     <fieldset className={LoginStyles.fieldset}>
-                        <legend>Login</legend>
+                        <legend className={LoginStyles.title}>Login</legend>
 
                         {this.props.error && <p>{this.props.error}</p>}
 
