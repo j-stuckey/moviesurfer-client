@@ -13,9 +13,6 @@ const passwordLength = length({ min: 8, max: 72 });
 const usernameLength = length({ min: 3, max: 32 });
 
 class RegisterPage extends Component {
-    constructor(props) {
-        super(props);
-    }
     handleFormSubmit = values => {
         const user = values;
 
