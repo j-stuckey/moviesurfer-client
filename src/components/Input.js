@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './styles/RegisterPage.module.css';
 
 export default class Input extends React.Component {
     componentDidUpdate(prevProps) {
@@ -39,6 +40,7 @@ export default class Input extends React.Component {
                     type={this.props.type}
                     ref={input => (this.input = input)}
                     placeholder={this.props.placeholder}
+                    className={styles.inputs}
                 >
                     {this.props.children}
                 </Element>

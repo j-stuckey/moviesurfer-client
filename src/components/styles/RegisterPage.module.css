@@ -4,7 +4,7 @@
 	margin: 60px auto;
 }
 
-.title{
+.title {
 	font-size: 1.5em;
 }
 
@@ -22,9 +22,10 @@
 .inputs {
 	color: rgb(2, 8, 15);
 	font-weight: bold;
+	font-size: 0.75em;
 	border-radius: 5px;
 	padding: 0 10px;
-	margin: 20px auto;
+	margin: 10px auto;
 	width: 100%;
 	max-width: 325px;
 	height: 35px;
@@ -36,14 +37,14 @@
 	text-transform: uppercase;
 }
 
-.registerLink {
+.link {
 	color: #005d70;
 	font-size: 0.9rem;
 	text-decoration: none;
 	text-decoration: underline;
 }
 
-.registerLink:hover {
+.link:hover {
 	color: red;
 	font-style: italic;
 }
