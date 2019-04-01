@@ -59,9 +59,7 @@ class RegisterPage extends Component {
                         />
                         <button
                             type="submit"
-                            className={`${styles.submit} ${
-                                ButtonStyles.registerButton
-                            }`}
+                            className={`${styles.submit} ${ButtonStyles.registerButton}`}
                         >
                             Sign up
                         </button>
