@@ -39,7 +39,6 @@ export class Header extends React.Component {
                         <MediaQuery query="(max-width: 400px)">
                             <BurgerMenu>
                                 <Link to="/">Home</Link>
-                                <Link to="/test">Test</Link>
                             </BurgerMenu>
                         </MediaQuery>
                     </React.Fragment>
