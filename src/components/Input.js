@@ -19,6 +19,24 @@ export default class Input extends React.Component {
         let error;
         if (this.props.meta.touched && this.props.meta.error) {
             error = <div className={styles.error}>{this.props.meta.error}</div>;
+            return <div>
+                <label htmlFor={this.props.input.name}>
+                    {this.props.label}
+                    {error}
+                    {warning}
+                </label>
+                <Element
+                    {...this.props.input}
+                    id={this.props.input.name}
+                    type={this.props.type}
+                    ref={input => (this.input = input)}
+                    placeholder={this.props.placeholder}
+                    className={styles.inputs}
+                    style={{ border: '1px solid red'}}
+                >
+                    {this.props.children}
+                </Element>
+            </div>;
         }
 
         // same thing here for warning
