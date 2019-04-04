@@ -1,0 +1,41 @@
+.logoutButton {
+	background: red;
+	border-radius: 5px;
+	padding: 6px 20px;
+	margin: auto;
+	text-transform: uppercase;
+	color: white;
+	font-weight: bold;
+	border: none;
+}
+
+.logoutButton:hover {
+	background: rgb(170, 9, 9);
+}
+
+.logoutButton:active {
+	box-shadow: none;
+	transform: translateY(4px);
+}
+
+.registerButton {
+	display: inline-block;
+	border: none;
+	color: rgb(81, 185, 245);
+	text-decoration: none;
+	background: rgb(2, 8, 15);	
+	border-radius: 5px;
+	padding: 10px 30px;
+	margin-left: 20px;
+	box-shadow: 0 3px rgb(189, 189, 189);
+	/* transition: all 0.2s ease-in; */
+}
+
+.registerButton:hover {
+	background: rgb(24, 41, 58);
+}
+
+.registerButton:active {
+	box-shadow: none;
+	transform: translateY(4px);
+}

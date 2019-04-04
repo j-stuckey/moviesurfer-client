@@ -1,0 +1,44 @@
+.logo {
+    color: white;
+    background: transparent;
+	border: none;
+	position: fixed;
+	left: 15px;
+}
+
+.topLink {
+	margin: 0 20px
+}
+
+.mainNav {
+    list-style: none;
+	display: flex;
+	justify-content: flex-end;
+    align-items: center;
+    background: rgb(2, 8, 15);
+    height: 45px;
+}
+
+.mainNavLeft {
+    list-style: none;
+    display: flex;
+    z-index: 10;
+    width: 100%;
+    background: rgb(2, 8, 15);	
+    align-items: center;
+    height: 45px;
+}
+
+.mainNav a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.mainNav a:hover {
+    text-decoration: underline;
+}
+
+.mainNav a:last-child {
+    text-decoration: none;
+}

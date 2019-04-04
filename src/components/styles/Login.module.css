@@ -1,0 +1,49 @@
+.form {
+	display: flex;
+	flex-direction: column;
+	margin: 60px auto;
+}
+
+.title{
+	font-size: 1.5em;
+}
+
+.fieldset {
+	display: flex;
+	justify-content: center;
+	border: 1px solid rgb(2, 8, 15);
+	border-radius: 3px;
+	padding: 30px;
+	height: 100%;
+	margin: 0 auto;
+	font-weight: bold;
+}
+
+.inputs {
+	color: rgb(2, 8, 15);
+	font-weight: bold;
+	border-radius: 5px;
+	padding: 0 10px;
+	margin: 20px auto;
+	width: 100%;
+	max-width: 325px;
+	height: 35px;
+}
+
+.submit {
+	margin: 20px auto;
+	min-width: 120px;
+	text-transform: uppercase;
+}
+
+.registerLink {
+	color: #005d70;
+	font-size: 0.9rem;
+	text-decoration: none;
+	text-decoration: underline;
+}
+
+.registerLink:hover {
+	color: red;
+	font-style: italic;
+}
