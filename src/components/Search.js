@@ -24,33 +24,33 @@ class Search extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        // this.props.dispatch(fetchMovies(this.state.searchTerm));
-        this.setState({ searchTerm: '' });
+        const { dispatch } = this.props;
+        const { searchTerm } = this.state;
+        // dispatch(fetchPostsIfNeeded(searchTerm));
     }
 
     render() {
         return (
-            <React.Fragment>
-                <div className={styles.searchContainer}>
-                    <label htmlFor="search" />
+            <div className={styles.searchContainer}>
+                <label htmlFor="search" />
+                <input
+                    className={styles.searchBar}
+                    type="text"
+                    name="search"
+                    placeholder="Search"
+                    value={this.state.searchTerm}
+                    onChange={this.handleChange}
+                />
+                <div className={styles.semicircle}>
                     <input
-                        className={styles.searchBar}
-                        type="text"
-                        name="search"
-                        placeholder="Search"
-                        value={this.state.searchTerm}
-                        onChange={this.handleChange}
+                        type="image"
+                        alt="magnifying glass"
+                        src={glass}
+                        className={styles.magnifier}
+                        onClick={this.handleSubmit}
                     />
-                    <div className={styles.semicircle}>
-                        <input
-                            type="image"
-                            alt="magnifying glass"
-                            src={glass}
-                            className={styles.magnifier}
-                        />
-                    </div>
                 </div>
-            </React.Fragment>
+            </div>
         );
     }
 }
