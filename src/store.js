@@ -4,11 +4,13 @@ import authReducer from './reducers/auth';
 import { reducer as formReducer } from 'redux-form';
 import { setAuthToken, refreshAuthToken } from './actions/auth';
 import { loadAuthToken } from './local-storage';
+import searchReducer from './reducers/search';
 
 export const store = createStore(
     combineReducers({
         auth: authReducer,
-        form: formReducer
+        form: formReducer,
+        search: searchReducer
     }),
     applyMiddleware(thunk)
 );

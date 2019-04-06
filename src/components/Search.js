@@ -1,10 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { fetchResults } from '../actions/search';
+
 import styles from './styles/Search.module.css';
-
-// import { fetchMovies } from '../actions/movies';
-// import SearchResult from './search-result';
-
 import glass from '../assets/magnifying-glass.png';
 
 class Search extends React.Component {
@@ -26,7 +24,7 @@ class Search extends React.Component {
         event.preventDefault();
         const { dispatch } = this.props;
         const { searchTerm } = this.state;
-        // dispatch(fetchPostsIfNeeded(searchTerm));
+        dispatch(fetchResults(searchTerm));
     }
 
     render() {
