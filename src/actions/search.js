@@ -1,20 +1,25 @@
+import { API_BASE_URL } from '../config';
+
 export const SEARCH_REQUEST = 'SEARCH_REQUEST';
 export const searchRequest = () => ({
     type: SEARCH_REQUEST
 });
 
 export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
-export const searchSuccess = (results) => ({
+export const searchSuccess = results => ({
     type: SEARCH_SUCCESS,
     results
-}); 
+});
 
-export const fetchResults = (searchTerm) => (dispatch) => {
+export const fetchResults = searchTerm => (dispatch, getState) => {
     dispatch(searchRequest(searchTerm));
-	
-    console.log(getState().search);
-	
-    // just a test to see if redux state changes
-    dispatch(searchSuccess({ testData: [] }));
-    console.log(getState().search);
+    return fetch(`${API_BASE_URL}/search?title=${searchTerm}`, {
+        method: 'GET'
+    })
+        .then(res => res.json())
+        .then(res => {
+            console.log({ searchState: getState().search });
+            dispatch(searchSuccess(res.data));
+        })
+        .catch(err => console.log(err));
 };
