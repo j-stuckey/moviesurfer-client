@@ -18,8 +18,7 @@ export const fetchResults = searchTerm => (dispatch, getState) => {
     })
         .then(res => res.json())
         .then(res => {
-            console.log({ searchState: getState().search });
-            dispatch(searchSuccess(res.data));
+            dispatch(searchSuccess(res));
         })
         .catch(err => console.log(err));
 };
