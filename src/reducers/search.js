@@ -1,18 +1,13 @@
 import { SEARCH_REQUEST, SEARCH_SUCCESS } from '../actions/search';
 
 const initialState = {
+    searchResults: [],
     error: null,
     isFetching: false
 };
 
 const searchReducer = (state = initialState, action) => {
-    // if (action.type === SEARCH_REQUEST) {
-    //     return {
-    //         ...state,
-    //         loading: true
-    //     };
-    // }
-    // return state;
+
     switch(action.type) {
     case SEARCH_REQUEST:
         return {
@@ -22,7 +17,8 @@ const searchReducer = (state = initialState, action) => {
     case SEARCH_SUCCESS:
         return {
             ...state,
-            isFetching: false
+            isFetching: false,
+            searchResults: [action.data]
         };
     default:
         return state;
