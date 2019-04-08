@@ -1,14 +1,20 @@
 import { SEARCH_REQUEST, SEARCH_SUCCESS } from '../actions/search';
 
 const initialState = {
-    searchResults: [],
+    results: {},
     error: null,
     isFetching: false
 };
 
-const searchReducer = (state = initialState, action) => {
+const results = (action) => {
+    return {
+        items: [...action.response.searchResults],
+        totalResults: action.response.totalResults
+    };
+};
 
-    switch(action.type) {
+const searchReducer = (state = initialState, action) => {
+    switch (action.type) {
     case SEARCH_REQUEST:
         return {
             ...state,
@@ -18,7 +24,7 @@ const searchReducer = (state = initialState, action) => {
         return {
             ...state,
             isFetching: false,
-            searchResults: [action.data]
+            results: results(action)
         };
     default:
         return state;
