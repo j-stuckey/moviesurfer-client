@@ -1,7 +1,10 @@
-import { SEARCH_REQUEST, SEARCH_SUCCESS } from '../actions/search';
+import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_ERROR } from '../actions/search';
 
 const initialState = {
-    results: {},
+    results: {
+        items: [],
+        totalResults: 0
+    },
     error: null,
     isFetching: false
 };
@@ -25,6 +28,11 @@ const searchReducer = (state = initialState, action) => {
             ...state,
             isFetching: false,
             results: results(action)
+        };
+    case SEARCH_ERROR:
+        return {
+            ...state,
+            error: action.err
         };
     default:
         return state;
