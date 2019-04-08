@@ -9,7 +9,8 @@ class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchTerm: ''
+            searchTerm: '',
+            touched: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -25,29 +26,37 @@ class Search extends React.Component {
         const { dispatch } = this.props;
         const { searchTerm } = this.state;
         dispatch(fetchResults(searchTerm));
+        this.setState({ touched: true });
     }
 
     render() {
+        const [...items] = this.props.results;
+		
         return (
-            <div className={styles.searchContainer}>
-                <label htmlFor="search" />
-                <input
-                    className={styles.searchBar}
-                    type="text"
-                    name="search"
-                    placeholder="Search"
-                    value={this.state.searchTerm}
-                    onChange={this.handleChange}
-                />
-                <div className={styles.semicircle}>
+            <div>
+                <div className={styles.searchContainer}>
+                    <label htmlFor="search" />
                     <input
-                        type="image"
-                        alt="magnifying glass"
-                        src={glass}
-                        className={styles.magnifier}
-                        onClick={this.handleSubmit}
+                        className={styles.searchBar}
+                        type="text"
+                        name="search"
+                        placeholder="Search"
+                        value={this.state.searchTerm}
+                        onChange={this.handleChange}
                     />
+                    <div className={styles.semicircle}>
+                        <input
+                            type="image"
+                            alt="magnifying glass"
+                            src={glass}
+                            className={styles.magnifier}
+                            onClick={this.handleSubmit}
+                        />
+                    </div>
                 </div>
+
+
+                {items && this.state.touched && <p>{this.props.totalResults} results found</p>}
             </div>
         );
     }
@@ -55,7 +64,8 @@ class Search extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.auth.currentUser !== null
+        results: state.search.results.items,
+        totalResults: state.search.results.totalResults
     };
 };
 
