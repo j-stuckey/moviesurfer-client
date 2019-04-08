@@ -11,6 +11,12 @@ export const searchSuccess = response => ({
     response
 });
 
+export const SEARCH_ERROR = 'SEARCH_ERROR';
+export const searchError = err => ({
+    type: SEARCH_ERROR,
+    err
+});
+
 export const fetchResults = searchTerm => (dispatch, getState) => {
     dispatch(searchRequest(searchTerm));
     return fetch(`${API_BASE_URL}/search?title=${searchTerm}`, {
@@ -20,5 +26,7 @@ export const fetchResults = searchTerm => (dispatch, getState) => {
         .then(res => {
             dispatch(searchSuccess(res));
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            dispatch(searchError(err));
+        });
 };
