@@ -6,9 +6,9 @@ export const searchRequest = () => ({
 });
 
 export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
-export const searchSuccess = results => ({
+export const searchSuccess = response => ({
     type: SEARCH_SUCCESS,
-    results
+    response
 });
 
 export const fetchResults = searchTerm => (dispatch, getState) => {
