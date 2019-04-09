@@ -50,7 +50,7 @@ class Search extends React.Component {
 		
         return (
             <div>
-				
+                <p>Welcome {this.props.username}!</p>
                 <form className={styles.searchContainer} onSubmit={this.handleSubmit}>
                     <label htmlFor="search" />
                     <input
@@ -75,7 +75,7 @@ class Search extends React.Component {
                 {this.props.isFetching && <p>Loading...</p>}
                 {searchMessage}
 				
-                <ol>{searchResults}</ol>
+                <ul className={styles.ul}>{searchResults}</ul>
             </div>
             
         );
@@ -84,6 +84,7 @@ class Search extends React.Component {
 
 const mapStateToProps = state => {
     return {
+        username: state.auth.currentUser.username,
         results: state.search.results.items,
         totalResults: state.search.results.totalResults,
         isFetching: state.search.isFetching,
