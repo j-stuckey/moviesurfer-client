@@ -36,7 +36,7 @@ class Search extends React.Component {
 		
         let searchMessage;
         if (items && this.state.touched && !this.props.isFetching) {
-            searchMessage = <p>{this.props.totalResults} results found for '{this.state.wasSearched}'</p>;
+            searchMessage = <p>{this.props.totalResults} results found for {this.state.wasSearched}</p>;
         } 
         if (this.props.message) {
             searchMessage = <p>{this.props.message}</p>;
