@@ -42,6 +42,12 @@ class Search extends React.Component {
             searchMessage = <p>{this.props.message}</p>;
         }
 		
+        const isEnabled = this.state.searchTerm.length > 0;
+		
+        const searchResults = items.map((result, index)=> {
+            return <li key={index}>{result.Title}</li>;
+        });
+		
         return (
             <div>
 				
@@ -61,14 +67,17 @@ class Search extends React.Component {
                             alt="magnifying glass"
                             src={glass}
                             className={styles.magnifier}
-                            onClick={this.handleSubmit}
+                            disabled={!isEnabled}
                         />
                     </div>
                 </form>
 
                 {this.props.isFetching && <p>Loading...</p>}
                 {searchMessage}
+				
+                <ol>{searchResults}</ol>
             </div>
+            
         );
     }
 }
