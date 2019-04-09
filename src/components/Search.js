@@ -45,7 +45,13 @@ class Search extends React.Component {
         const isEnabled = this.state.searchTerm.length > 0;
 		
         const searchResults = items.map((result, index)=> {
-            return <li key={index}>{result.Title}</li>;
+            console.log(result);
+            return (
+                <div key={index}>
+                    <p>{result.Title} ({result.Year})</p>
+                    <img src={result.Poster} alt="poster image"/>
+                </div>
+            );
         });
 		
         return (
