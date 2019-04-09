@@ -45,7 +45,7 @@ class Search extends React.Component {
         return (
             <div>
 				
-                <div className={styles.searchContainer}>
+                <form className={styles.searchContainer} onSubmit={this.handleSubmit}>
                     <label htmlFor="search" />
                     <input
                         className={styles.searchBar}
@@ -64,7 +64,7 @@ class Search extends React.Component {
                             onClick={this.handleSubmit}
                         />
                     </div>
-                </div>
+                </form>
 
                 {this.props.isFetching && <p>Loading...</p>}
                 {searchMessage}
