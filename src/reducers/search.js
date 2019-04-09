@@ -5,6 +5,7 @@ const initialState = {
         items: [],
         totalResults: 0
     },
+    message: '',
     error: null,
     isFetching: false
 };
@@ -27,6 +28,7 @@ const searchReducer = (state = initialState, action) => {
         return {
             ...state,
             isFetching: false,
+            message: action.response.message,
             results: results(action)
         };
     case SEARCH_ERROR:

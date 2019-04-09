@@ -10,7 +10,8 @@ class Search extends React.Component {
         super(props);
         this.state = {
             searchTerm: '',
-            touched: false
+            touched: false,
+            wasSearched: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -27,13 +28,23 @@ class Search extends React.Component {
         const { searchTerm } = this.state;
         dispatch(fetchResults(searchTerm));
         this.setState({ touched: true });
+        this.setState({ wasSearched: this.state.searchTerm });
     }
 
     render() {
         const [...items] = this.props.results;
 		
+        let searchMessage;
+        if (items && this.state.touched && !this.props.isFetching) {
+            searchMessage = <p>{this.props.totalResults} results found for '{this.state.wasSearched}'</p>;
+        } 
+        if (this.props.message) {
+            searchMessage = <p>{this.props.message}</p>;
+        }
+		
         return (
             <div>
+				
                 <div className={styles.searchContainer}>
                     <label htmlFor="search" />
                     <input
@@ -55,8 +66,8 @@ class Search extends React.Component {
                     </div>
                 </div>
 
-
-                {items && this.state.touched && <p>{this.props.totalResults} results found</p>}
+                {this.props.isFetching && <p>Loading...</p>}
+                {searchMessage}
             </div>
         );
     }
@@ -65,7 +76,9 @@ class Search extends React.Component {
 const mapStateToProps = state => {
     return {
         results: state.search.results.items,
-        totalResults: state.search.results.totalResults
+        totalResults: state.search.results.totalResults,
+        isFetching: state.search.isFetching,
+        message: state.search.message
     };
 };
 
