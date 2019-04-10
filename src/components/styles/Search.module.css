@@ -31,3 +31,9 @@
 .magnifier {
 	padding: 10px;
 }
+
+.ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0 auto;
+}

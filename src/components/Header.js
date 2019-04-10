@@ -9,11 +9,14 @@ import buttonStyles from './styles/button.module.css';
 import MediaQuery from 'react-responsive';
 
 import PropTypes from 'prop-types';
+import { resetState } from '../store';
 
 export class Header extends React.Component {
     logOut = event => {
         this.props.dispatch(clearAuth());
+        // this clears auth token from localStorage
         clearAuthToken();
+        this.props.dispatch(resetState());
         this.props.history.push('/login');
     };
 

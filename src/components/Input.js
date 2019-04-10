@@ -17,6 +17,7 @@ export default class Input extends React.Component {
         // if the tag is touches and there is an error
         // this is it
         let error;
+        let warning;
         if (this.props.meta.touched && this.props.meta.error) {
             error = <div className={styles.error}>{this.props.meta.error}</div>;
             return <div>
@@ -40,7 +41,6 @@ export default class Input extends React.Component {
         }
 
         // same thing here for warning
-        let warning;
         if (this.props.meta.touched && this.props.meta.warning) {
             warning = <div>{this.props.meta.warning}</div>;
         }

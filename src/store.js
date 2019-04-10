@@ -4,15 +4,27 @@ import authReducer from './reducers/auth';
 import { reducer as formReducer } from 'redux-form';
 import { setAuthToken, refreshAuthToken } from './actions/auth';
 import { loadAuthToken } from './local-storage';
+import searchReducer from './reducers/search';
 
-export const store = createStore(
-    combineReducers({
-        auth: authReducer,
-        form: formReducer
-    }),
-    applyMiddleware(thunk)
-);
+const appReducer = combineReducers({
+    auth: authReducer,
+    form: formReducer,
+    search: searchReducer
+});
 
+export const RESET_STATE = 'RESET_STATE';
+export const resetState = () => ({
+    type: RESET_STATE
+});
+
+const rootReducer = (state, action) => {
+    if (action.type === RESET_STATE) {
+        state = undefined;
+    }
+    return appReducer(state, action);
+};
+
+export const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const authToken = loadAuthToken();
 if (authToken) {

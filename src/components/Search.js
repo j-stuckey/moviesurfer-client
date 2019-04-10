@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { fetchResults, clearSearch } from '../actions/search';
+
 import styles from './styles/Search.module.css';
-
-// import { fetchMovies } from '../actions/movies';
-// import SearchResult from './search-result';
-
 import glass from '../assets/magnifying-glass.png';
 
 class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchTerm: ''
+            searchTerm: '',
+            touched: false,
+            wasSearched: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -24,14 +24,44 @@ class Search extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        // this.props.dispatch(fetchMovies(this.state.searchTerm));
-        this.setState({ searchTerm: '' });
+        const { dispatch } = this.props;
+        const { searchTerm } = this.state;
+        dispatch(fetchResults(searchTerm));
+        this.setState({ touched: true });
+        this.setState({ wasSearched: this.state.searchTerm });
     }
-
+	
+    componentWillUnmount(){
+        this.props.dispatch(clearSearch());
+    }
+	
     render() {
+        const [...items] = this.props.results;
+		
+        let searchMessage;
+        if (items && this.state.touched && !this.props.isFetching) {
+            searchMessage = <p>{this.props.totalResults} results found for {this.state.wasSearched}</p>;
+        } 
+        if (this.props.message) {
+            searchMessage = <p>{this.props.message}</p>;
+        }
+		
+        const isEnabled = this.state.searchTerm.length > 0;
+
+        const searchResults = items.map((result, index)=> {
+            console.log(result);
+            return (
+                <div key={index}>
+                    <p>{result.Title} ({result.Year})</p>
+                    <img src={result.Poster} alt="media poster"/>
+                </div>
+            );
+        });
+		
         return (
-            <React.Fragment>
-                <div className={styles.searchContainer}>
+            <div>
+                <p>Welcome {this.props.username}!</p>
+                <form className={styles.searchContainer} onSubmit={this.handleSubmit}>
                     <label htmlFor="search" />
                     <input
                         className={styles.searchBar}
@@ -47,17 +77,28 @@ class Search extends React.Component {
                             alt="magnifying glass"
                             src={glass}
                             className={styles.magnifier}
+                            disabled={!isEnabled}
                         />
                     </div>
-                </div>
-            </React.Fragment>
+                </form>
+
+                {this.props.isFetching && <p>Loading...</p>}
+                {searchMessage}
+				
+                <ul className={styles.ul}>{searchResults}</ul>
+            </div>
+            
         );
     }
 }
 
 const mapStateToProps = state => {
     return {
-        isLoggedIn: state.auth.currentUser !== null
+        username: state.auth.currentUser.username,
+        results: state.search.results.items,
+        totalResults: state.search.results.totalResults,
+        isFetching: state.search.isFetching,
+        message: state.search.message
     };
 };
 
