@@ -30,7 +30,7 @@ class Search extends React.Component {
         this.setState({ touched: true });
         this.setState({ wasSearched: this.state.searchTerm });
     }
-
+	
     render() {
         const [...items] = this.props.results;
 		
@@ -43,13 +43,13 @@ class Search extends React.Component {
         }
 		
         const isEnabled = this.state.searchTerm.length > 0;
-		
+
         const searchResults = items.map((result, index)=> {
             console.log(result);
             return (
                 <div key={index}>
                     <p>{result.Title} ({result.Year})</p>
-                    <img src={result.Poster} alt="poster image"/>
+                    <img src={result.Poster} alt="media poster"/>
                 </div>
             );
         });
