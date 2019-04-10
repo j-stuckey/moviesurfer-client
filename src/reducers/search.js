@@ -1,4 +1,9 @@
-import { SEARCH_REQUEST, SEARCH_SUCCESS, SEARCH_ERROR } from '../actions/search';
+import {
+    SEARCH_REQUEST,
+    SEARCH_SUCCESS,
+    SEARCH_ERROR,
+    CLEAR_SEARCH
+} from '../actions/search';
 
 const initialState = {
     results: {
@@ -36,6 +41,8 @@ const searchReducer = (state = initialState, action) => {
             ...state,
             error: action.err
         };
+    case CLEAR_SEARCH:
+        return initialState;
     default:
         return state;
     }

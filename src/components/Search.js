@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchResults } from '../actions/search';
+import { fetchResults, clearSearch } from '../actions/search';
 
 import styles from './styles/Search.module.css';
 import glass from '../assets/magnifying-glass.png';
@@ -29,6 +29,10 @@ class Search extends React.Component {
         dispatch(fetchResults(searchTerm));
         this.setState({ touched: true });
         this.setState({ wasSearched: this.state.searchTerm });
+    }
+	
+    componentWillUnmount(){
+        this.props.dispatch(clearSearch());
     }
 	
     render() {

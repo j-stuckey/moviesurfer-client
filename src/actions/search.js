@@ -17,6 +17,11 @@ export const searchError = err => ({
     err
 });
 
+export const CLEAR_SEARCH = 'CLEAR_SEARCH';
+export const clearSearch = () => ({
+    type: CLEAR_SEARCH
+});
+
 export const fetchResults = searchTerm => (dispatch, getState) => {
     dispatch(searchRequest(searchTerm));
     return fetch(`${API_BASE_URL}/search?title=${searchTerm}`, {
