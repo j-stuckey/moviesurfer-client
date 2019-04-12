@@ -9,7 +9,7 @@ const initialState = {
     results: {
         items: [],
         totalResults: 0,
-        pages: 1
+        pageCount: 0
     },
     currentPage: 1,
     message: '',
@@ -21,7 +21,7 @@ const results = (action) => {
     return {
         items: [...action.response.searchResults],
         totalResults: Number(action.response.totalResults),
-        pages: Math.ceil(action.response.totalResults / 10)
+        pageCount: action.response.pageCount
     };
 };
 
