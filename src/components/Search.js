@@ -19,7 +19,7 @@ class Search extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({ searchTerm: event.target.value });
+        this.setState({ [event.target.name]: event.target.value });
     }
 
     handleSubmit(event) {
@@ -66,7 +66,7 @@ class Search extends React.Component {
                     <input
                         className={styles.searchBar}
                         type="text"
-                        name="search"
+                        name="searchTerm"
                         placeholder="Search"
                         value={this.state.searchTerm}
                         onChange={this.handleChange}
