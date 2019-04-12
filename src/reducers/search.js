@@ -20,7 +20,7 @@ const initialState = {
 const results = (action) => {
     return {
         items: [...action.response.searchResults],
-        totalResults: action.response.totalResults,
+        totalResults: Number(action.response.totalResults),
         pages: Math.ceil(action.response.totalResults / 10)
     };
 };
