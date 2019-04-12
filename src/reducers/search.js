@@ -8,8 +8,10 @@ import {
 const initialState = {
     results: {
         items: [],
-        totalResults: 0
+        totalResults: 0,
+        pages: 1
     },
+    currentPage: 1,
     message: '',
     error: null,
     isFetching: false
@@ -18,7 +20,8 @@ const initialState = {
 const results = (action) => {
     return {
         items: [...action.response.searchResults],
-        totalResults: action.response.totalResults
+        totalResults: action.response.totalResults,
+        pages: Math.ceil(action.response.totalResults / 10)
     };
 };
 
