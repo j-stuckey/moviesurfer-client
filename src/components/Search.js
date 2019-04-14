@@ -12,12 +12,14 @@ class Search extends React.Component {
         this.state = {
             searchTerm: '',
             touched: false,
-            wasSearched: ''
+            wasSearched: '',
+            currentPage: 1
         };
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleAddFavorite = this.handleAddFavorite.bind(this);
+        this.goToNextPage = this.goToNextPage.bind(this);
     }
 
     handleChange(event) {
@@ -26,6 +28,7 @@ class Search extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        this.setState({ currentPage: 1 });
         const { dispatch } = this.props;
         const { searchTerm } = this.state;
         dispatch(fetchResults(searchTerm));
@@ -35,16 +38,22 @@ class Search extends React.Component {
 	
     handleAddFavorite(e){
         e.preventDefault();
-        console.log('add favorit clicked');
+        console.log('add favorite clicked');
     }
 	
     componentWillUnmount(){
         this.props.dispatch(clearSearch());
     }
+
+    async goToNextPage(event){
+        const { dispatch } = this.props;		
+        await this.setState({ currentPage: this.state.currentPage + 1 });
+        dispatch(fetchResults(this.state.searchTerm, this.state.currentPage));
+    }
 	
     render() {
-        const [...items] = this.props.results;
-        const { message, isFetching, totalResults, username } = this.props;
+        const items = this.props.results.items;
+        const { message, isFetching, totalResults, username, results} = this.props;
 		
         // eslint-disable-next-line no-unused-vars
         let searchMessage;
@@ -98,7 +107,10 @@ class Search extends React.Component {
                 {isFetching && <p>Loading...</p>}
                 {searchMessage}
 
+                {(totalResults > 10 && this.state.currentPage < this.props.pageCount)  && <button onClick={this.goToNextPage}>Next page</button>}
+
                 {searchResults.length > 0 && <ul className={styles.ul}>{searchResults}</ul>}
+				
             </div>
             
         );
@@ -117,10 +129,12 @@ Search.propTypes = {
 const mapStateToProps = state => {
     return {
         username: state.auth.currentUser.username,
-        results: state.search.results.items,
+        results: state.search.results,
+        pageCount: state.search.results.pageCount,
         totalResults: state.search.results.totalResults,
         isFetching: state.search.isFetching,
-        message: state.search.message
+        message: state.search.message,
+        currentPage: state.search.currentPage
     };
 };
 

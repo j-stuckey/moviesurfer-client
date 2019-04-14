@@ -22,9 +22,9 @@ export const clearSearch = () => ({
     type: CLEAR_SEARCH
 });
 
-export const fetchResults = searchTerm => (dispatch, getState) => {
+export const fetchResults = (searchTerm, pageNumber = 1) => (dispatch, getState) => {
     dispatch(searchRequest(searchTerm));
-    return fetch(`${API_BASE_URL}/search?title=${searchTerm}`, {
+    return fetch(`${API_BASE_URL}/search?searchTerm=${searchTerm}&pageNumber=${pageNumber}`, {
         method: 'GET'
     })
         .then(res => res.json())
