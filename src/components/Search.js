@@ -6,6 +6,14 @@ import PropTypes from 'prop-types';
 import styles from './styles/Search.module.css';
 import glass from '../assets/magnifying-glass.png';
 
+import PulseLoader from 'react-spinners/PulseLoader';
+
+// const override = css`
+//     display: block;
+//     margin: 0 auto;
+//     border-color: red;
+// `;
+
 class Search extends React.Component {
     constructor(props) {
         super(props);
@@ -111,7 +119,12 @@ class Search extends React.Component {
                     </div>
                 </form>
 
-                {isFetching && <p>Loading...</p>}
+                <PulseLoader
+                    sizeUnit={'px'}
+                    size={20}
+                    color={'#51b9f5'}
+                    loading={isFetching}
+                />
                 {searchMessage}
 
                 {(totalResults > 10 && this.props.pageCount > 1 && this.state.currentPage > 1) && <button onClick={this.goToPrevPage}>Prev page</button>}
