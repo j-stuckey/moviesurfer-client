@@ -20,6 +20,7 @@ class Search extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleAddFavorite = this.handleAddFavorite.bind(this);
         this.goToNextPage = this.goToNextPage.bind(this);
+        this.goToPrevPage = this.goToPrevPage.bind(this);
     }
 
     handleChange(event) {
@@ -51,9 +52,15 @@ class Search extends React.Component {
         dispatch(fetchResults(this.state.searchTerm, this.state.currentPage));
     }
 	
+    async goToPrevPage(event){
+        const { dispatch } = this.props;
+        await this.setState({ currentPage: this.state.currentPage - 1 });
+        dispatch(fetchResults(this.state.searchTerm, this.state.currentPage));		
+    }
+	
     render() {
         const items = this.props.results.items;
-        const { message, isFetching, totalResults, username, results} = this.props;
+        const { message, isFetching, totalResults, username, results, pageCount} = this.props;
 		
         // eslint-disable-next-line no-unused-vars
         let searchMessage;
@@ -107,7 +114,9 @@ class Search extends React.Component {
                 {isFetching && <p>Loading...</p>}
                 {searchMessage}
 
+                {(totalResults > 10 && this.props.pageCount > 1 && this.state.currentPage > 1) && <button onClick={this.goToPrevPage}>Prev page</button>}
                 {(totalResults > 10 && this.state.currentPage < this.props.pageCount)  && <button onClick={this.goToNextPage}>Next page</button>}
+                {items.length > 0 && <p>Page {this.state.currentPage} of {pageCount}</p>}
 
                 {searchResults.length > 0 && <ul className={styles.ul}>{searchResults}</ul>}
 				
