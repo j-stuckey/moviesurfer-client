@@ -2,6 +2,7 @@ version: '3'
 services:
     front-end:
         build: .
+        container_name: moviesurfer_client
         image: moviesurfer:latest
         command: npm run dev
         environment: 

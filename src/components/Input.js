@@ -16,8 +16,8 @@ export default class Input extends React.Component {
         // defines error for use later
         // if the tag is touches and there is an error
         // this is it
-        let error;
-        let warning;
+        let error, warning;
+		
         if (this.props.meta.touched && this.props.meta.error) {
             error = <div className={styles.error}>{this.props.meta.error}</div>;
             return <div>
