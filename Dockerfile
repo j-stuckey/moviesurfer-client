@@ -1,22 +1,8 @@
-# Development Stage
-FROM node:11 as base
+FROM node:12 as base
 COPY . /usr/src/app
 WORKDIR /usr/src/app
-RUN npm install
+RUN npm install -s
 
-# Production
-# Install `serve`.
-RUN npm install -g serve
-
-# Install all dependencies of the current project.
-COPY package.json package.json
-RUN npm install
-
-# Copy all local files into the image.
-COPY . .
-
-# Build for production.
+FROM node:12 as production
+COPY --from=base /usr/src/app ./
 RUN npm run build
-
-# serve static files in dist folder
-CMD serve -p $PORT -s build
