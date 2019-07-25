@@ -7,6 +7,7 @@
         "jwt-decode": "^2.2.0",
         "morgan": "^1.9.1",
         "normalize.css": "^8.0.1",
+        "portfolio": "github:j-stuckey/portfolio",
         "react": "^16.8.4",
         "react-dom": "^16.8.4",
         "react-redux": "^6.0.1",

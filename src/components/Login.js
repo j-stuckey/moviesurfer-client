@@ -34,6 +34,7 @@ export class Login extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        console.log('hello');
 
         this.props
             .dispatch(login(this.state.username, this.state.password))
