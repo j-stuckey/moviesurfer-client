@@ -1,14 +1,14 @@
 version: '3.4'
 services:
   ui:
-    build: 
+    build:
       context: .
       target: base
     container_name: moviesurfer_ui
     image: moviesurfer_ui
     command: npm run dev
     ports:
-    - '3000:3000'
+    - '5000:3000'
     volumes:
     - .:/usr/src/app
     - /usr/src/app/node_modules

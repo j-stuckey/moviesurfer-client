@@ -3,11 +3,8 @@
     "version": "1.1.0",
     "private": true,
     "dependencies": {
-        "express": "^4.16.4",
         "jwt-decode": "^2.2.0",
-        "morgan": "^1.9.1",
         "normalize.css": "^8.0.1",
-        "portfolio": "github:j-stuckey/portfolio",
         "react": "^16.8.4",
         "react-dom": "^16.8.4",
         "react-redux": "^6.0.1",
@@ -36,6 +33,13 @@
     "devDependencies": {
         "enzyme": "^3.9.0",
         "enzyme-adapter-react-16": "^1.11.2",
-        "enzyme-to-json": "^3.3.5"
+        "enzyme-to-json": "^3.3.5",
+        "eslint": "^6.1.0",
+        "eslint-config-standard": "^13.0.1",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-node": "^9.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-react": "^7.14.3",
+        "eslint-plugin-standard": "^4.0.0"
     }
 }
