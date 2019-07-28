@@ -9,12 +9,12 @@ import searchReducer from './reducers/search';
 const appReducer = combineReducers({
     auth: authReducer,
     form: formReducer,
-    search: searchReducer
+    search: searchReducer,
 });
 
 export const RESET_STATE = 'RESET_STATE';
 export const resetState = () => ({
-    type: RESET_STATE
+    type: RESET_STATE,
 });
 
 const rootReducer = (state, action) => {

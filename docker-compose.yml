@@ -1,13 +1,14 @@
-version: '3'
+version: '3.4'
 services:
-    front-end:
-        build: .
-        image: moviesurfer:latest
-        command: npm run dev
-        environment: 
-          - REACT_APP_API_BASE_URL=http://localhost:8080/api
-        ports:
-          - '3000:3000'
-        volumes:
-          - '.:/usr/src/app'
-          - /usr/src/app/node_modules
+  ui:
+    build:
+      context: .
+      target: base
+    container_name: moviesurfer_ui
+    image: moviesurfer_ui
+    command: npm run dev
+    ports:
+    - '5000:3000'
+    volumes:
+    - .:/usr/src/app
+    - /usr/src/app/node_modules

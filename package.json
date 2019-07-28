@@ -12,6 +12,7 @@
         "react-router": "^4.3.1",
         "react-router-dom": "^4.3.1",
         "react-scripts-cssmodules": "1.1.50",
+        "react-spinners": "^0.5.4",
         "redux": "^4.0.1",
         "redux-form": "^8.1.0",
         "redux-thunk": "^2.3.0",
@@ -32,6 +33,13 @@
     "devDependencies": {
         "enzyme": "^3.9.0",
         "enzyme-adapter-react-16": "^1.11.2",
-        "enzyme-to-json": "^3.3.5"
+        "enzyme-to-json": "^3.3.5",
+        "eslint": "^6.1.0",
+        "eslint-config-standard": "^13.0.1",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-node": "^9.1.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-react": "^7.14.3",
+        "eslint-plugin-standard": "^4.0.0"
     }
 }

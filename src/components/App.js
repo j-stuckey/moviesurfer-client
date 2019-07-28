@@ -8,7 +8,7 @@ import PrivateRoute from './PrivateRoute';
 import { NoMatch } from './NoMatch';
 import Header from './Header';
 import RegisterPage from './RegisterPage';
-
+import Settings from './Settings';
 import PropTypes from 'prop-types';
 
 export class App extends Component {
@@ -26,6 +26,7 @@ export class App extends Component {
                             isLoggedIn={this.props.isLoggedIn}
                             component={Search}
                         />
+                        <Route exact path="/settings" component={Settings} />
                         <Route component={NoMatch} />
                     </Switch>
                 </React.Fragment>
